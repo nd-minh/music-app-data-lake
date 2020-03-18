@@ -12,8 +12,8 @@ from pyspark.sql.types import IntegerType
 config = configparser.ConfigParser()
 config.read('dl.cfg')
 
-os.environ['AWS_ACCESS_KEY_ID']=config['AWS_ACCESS_KEY_ID']
-os.environ['AWS_SECRET_ACCESS_KEY']=config['AWS_SECRET_ACCESS_KEY']
+os.environ['AWS_ACCESS_KEY_ID']=config['CREDENTIALS']['AWS_ACCESS_KEY_ID']
+os.environ['AWS_SECRET_ACCESS_KEY']=config['CREDENTIALS']['AWS_SECRET_ACCESS_KEY']
 
 
 def create_spark_session():
@@ -26,7 +26,7 @@ def create_spark_session():
 
 def process_song_data(spark, input_data, output_data):
     # get filepath to song data file
-    song_data = input_data + "song_data"
+    song_data = input_data + "song_data/*/*/*/*.json"
     
     # read song data file
     df = spark.read.json(song_data)
@@ -59,7 +59,7 @@ def process_song_data(spark, input_data, output_data):
 
 def process_log_data(spark, input_data, output_data):
     # get filepath to log data file
-    log_data = input_data + "log_data"
+    log_data = input_data + "log_data/*.json"
 
     # read log data file
     df = spark.read.json(log_data)
@@ -138,7 +138,7 @@ def process_log_data(spark, input_data, output_data):
 def main():
     spark = create_spark_session()
     input_data = "s3a://udacity-dend/"
-    output_data = ""
+    output_data = "s3a://minh-data-lake/"
     
     process_song_data(spark, input_data, output_data)    
     process_log_data(spark, input_data, output_data)

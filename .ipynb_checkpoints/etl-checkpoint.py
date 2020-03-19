@@ -17,6 +17,16 @@ os.environ['AWS_SECRET_ACCESS_KEY']=config['CREDENTIALS']['AWS_SECRET_ACCESS_KEY
 
 
 def create_spark_session():
+    """
+    Description: This function creates a Spark session that let us 
+    interact with Spark
+    
+    Arguments: 
+    - None
+    
+    Return:
+    - a Spark session
+    """
     spark = SparkSession \
         .builder \
         .config("spark.jars.packages", "org.apache.hadoop:hadoop-aws:2.7.0") \
@@ -25,6 +35,20 @@ def create_spark_session():
 
 
 def process_song_data(spark, input_data, output_data):
+    """
+    Description: This function pulls the relevant information from the song 
+    location on S3, inserts it into dimension tables, and write the results
+    back to S3 in as Parquet files
+    
+    Arguments: 
+    - spark: a Spark session
+    - input_data: S3 location of the input data bucket
+    - output_data: S3 location of the output data bucket
+    
+    Return:
+    - None
+    """
+    
     # get filepath to song data file
     song_data = input_data + "song_data/*/*/*/*.json"
     
@@ -58,6 +82,20 @@ def process_song_data(spark, input_data, output_data):
 
 
 def process_log_data(spark, input_data, output_data):
+    """
+    Description: This function pulls the relevant information from the log
+    location on S3, inserts it into dimension tables, and write the results
+    back to S3 in as Parquet files
+    
+    Arguments: 
+    - spark: a Spark session
+    - input_data: S3 location of the input data bucket
+    - output_data: S3 location of the output data bucket
+    
+    Return:
+    - None
+    """
+    
     # get filepath to log data file
     log_data = input_data + "log_data/*.json"
 
@@ -136,6 +174,15 @@ def process_log_data(spark, input_data, output_data):
 
 
 def main():
+    """
+    Description: This function runs the ETL pipeline using above-defined functions
+    
+    Arguments: 
+    - None
+    
+    Return:
+    - None
+    """
     spark = create_spark_session()
     input_data = "s3a://udacity-dend/"
     output_data = "s3a://minh-data-lake/"

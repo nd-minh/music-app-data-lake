@@ -1,4 +1,4 @@
-# Database Lake for a Music Streaming App 
+# Data Lake for a Music Streaming App 
 
 (This project is the fourth one in a data engineering project series for a music streaming app, for a design of relational/NoSQL databasea version of the app, please refer to [Part 1](https://github.com/nd-minh/music-app-data-modeling) and [Part 2](https://github.com/nd-minh/music-app-data-modeling-part-2). For a design of a Data Warehouse for this music app, please refer to [Part 3](https://github.com/nd-minh/music-app-data-warehouse))
 

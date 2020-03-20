@@ -1,6 +1,6 @@
 # Data Lake for a Music Streaming App 
 
-(This project is the fourth one in a data engineering project series for a music streaming app, for a design of relational/NoSQL databasea version of the app, please refer to [Part 1](https://github.com/nd-minh/music-app-data-modeling) and [Part 2](https://github.com/nd-minh/music-app-data-modeling-part-2). For a design of a Data Warehouse for this music app, please refer to [Part 3](https://github.com/nd-minh/music-app-data-warehouse))
+(This project is the fourth episode in a data engineering project series for a music streaming app, for a design of relational/NoSQL databases of the app, please refer to [Part 1](https://github.com/nd-minh/music-app-data-modeling) and [Part 2](https://github.com/nd-minh/music-app-data-modeling-part-2). For a design of a Data Warehouse for this music app, please refer to [Part 3](https://github.com/nd-minh/music-app-data-warehouse))
 
 In this project, our aim is to design a data lake for a music streaming app. We are given two sources of data as follows:
 
@@ -17,12 +17,12 @@ Example:
 {"num_songs": 1, "artist_id": "ARJIE2Y1187B994AB7", "artist_latitude": null, "artist_longitude": null, "artist_location": "", "artist_name": "Line Renaud", "song_id": "SOUPIRU12A6D4FA1E1", "title": "Der Kleine Dompfaff", "duration": 152.92036, "year": 0}
 ```
 
-Both the two sources of data are stored in Amazon S3. Our task for this project is to build an ETL pipeline that perform the following steps: 
-1. Extracts the data from two sources in S3 
+Both the sources of data are stored in Amazon S3. Our task for this project is to build an ETL pipeline that performs the following steps: 
+1. Extract the data from two sources in S3 
 2. Pull the relevant information to put into dimension tables using Spark 
-3. Loads the data back into S3 as a set of dimensional tables 
+3. Load the data back into S3 as a set of dimensional tables 
 
-The dimension tables are designed so that they are optimized for queries on song play analysis. To that end, we propose a star schema and an ETL pipeline to transfer the data from the two sources in S3 into one fact tables and four dimension tables. The descriptions of the tables and their relationship is as follows.
+The dimension tables are designed so that they are optimized for queries on song play analysis. To that end, we propose a star schema and an ETL pipeline to transfer the data from the two sources in S3 into one fact tables and four dimension tables. The description of the tables and their relationship is as follows.
 
 #### Dimension Tables:
 - Table `Artists`: contains information about artists in the app. *Columns:* artist_id, name, location, latitude, longitude. 
